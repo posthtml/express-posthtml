@@ -1,6 +1,6 @@
 {
   "name": "express-posthtml",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "description": "PostHTML View Engine for Express",
   "main": "index.js",
   "dependencies": {
@@ -9,7 +9,7 @@
   "keywords": [
     "HTML",
     "PostHTML",
-    "ExpressJS",
+    "Express",
     "View Engine"
   ],
   "author": {
