@@ -1,4 +1,10 @@
-test/
-node_modules/
-npm-debug.log
+#FILES
+
 .editorconfig
+.gitignore
+npm-debug.log
+
+# DIRECTORIES
+
+test
+node_modules
