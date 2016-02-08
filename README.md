@@ -1,5 +1,5 @@
 # [PostHTML](https://github.com/posthtml/posthtml)
-View Engine for [ExpressJS](expressjs.com)
+View Engine for [Express](expressjs.com)
 
 [PostHTML Plugins Catalog](https://maltsev.github.io/posthtml-plugins/)
 
@@ -12,7 +12,7 @@ View Engine for [ExpressJS](expressjs.com)
 
 # Usage
 ## Engine
-Register PostHTML as ExpressJS View Engine
+Register PostHTML as View Engine
 
 ```javascript
 app.engine('html', require('express-posthtml'))
@@ -23,7 +23,7 @@ app.set('view engine', 'html')
 
 ## Plugins
 ### Global
-All Views will be render with the same plugin setup.
+All Views will be render with this plugin setup, if no local setup provided.
 
 ```javascript
 app.set('view options', [ PostHTML Plugins ])
@@ -34,7 +34,7 @@ res.render('file')
 ```
 
 ### Local
-View specific setup adding plugins separately as needed.
+View specific setup by adding plugins separately to the respective routes. Note that if you have set plugins globally, routes with local setup will not use the global setup by default.
 
 ```javascript
 app.set('view options', [])
@@ -45,7 +45,7 @@ res.render('file', { plugins: [ PostHTML Plugins ] })
 ```
 
 ### Extend
-If views share common plugins (e.g [BEM](https://github.com/rajdee/posthtml-bem)), but view specific additions are necessary, use the extend option. This 'extends' the global setup with the local plugins as specified in the respective route.
+If views share common plugins (e.g [BEM](https://github.com/rajdee/posthtml-bem)), but view specific additions are necessary, use the extend option. Now the global setup is used and will be extended with the local plugins of the respective route.
 
 ```javascript
 app.set('view options', [ PostHTML Global Plugins ])
@@ -72,7 +72,7 @@ app.set('view options', [/* PostHTML Plugins */]) // Global Setup
 
 // Global Use
 app.get('/', (req, res) => {
-  res.render('file')
+    res.render('file')
   })
 // Local
 app.get('/local', (req, res) => {
