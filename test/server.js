@@ -4,15 +4,16 @@ var app = express()
 
 var bem = require('posthtml-bem')
 var each = require('posthtml-each')
+var include = require('posthtml-include')
 
 app.engine('html', require('../index'))
 
 app.set('views', __dirname)
 app.set('view engine', 'html')
-app.set('view options', [ bem() ])
+app.set('view options', [ include({ encoding: 'utf-8' }), bem() ])
 
 app.get('/', (req, res) => {
-  res.render('bem')
+  res.render('include')
 })
 
 app.get('/local', (req, res) => {
