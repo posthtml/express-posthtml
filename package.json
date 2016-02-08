@@ -1,28 +1,28 @@
 {
   "name": "posthtml-express",
-  "version": "0.0.3",
-  "description": "PostHTML Template Engine for Express",
+  "version": "0.8.0",
+  "description": "PostHTML View Engine for Express",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "dependencies": {
+    "posthtml": "^0.8.2"
+  },
+  "keywords": [
+    "HTML",
+    "PostHTML",
+    "ExpressJS",
+    "View Engine"
+  ],
+  "author": {
+    "name": "Michael Ciniawsky",
+    "email": "<michael.ciniawsky@gmail.com>"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/michael-ciniawsky/posthtml-express.git"
   },
-  "keywords": [
-    "PostHTML",
-    "Express",
-    "Template",
-    "Engine"
-  ],
-  "author": "Michael Ciniawsky <michael.ciniawsky@gmail.com> (https://github.com/michael-ciniawsky)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/michael-ciniawsky/posthtml-express/issues"
   },
   "homepage": "https://github.com/michael-ciniawsky/posthtml-express#readme",
-  "dependencies": {
-    "posthtml": "^0.8.1"
-  }
+  "license": "MIT"
 }
