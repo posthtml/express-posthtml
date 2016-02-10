@@ -14,6 +14,8 @@ View Engine for [Express](expressjs.com)
 (sudo) npm i -S express-posthtml
 ```
 
+[![npm](https://badge.fury.io/js/express-posthtml.svg)](https://badge.fury.io/js/express-posthtml) ![dependencies](https://david-dm.org/michael-ciniawsky/express-posthtml.svg)
+
 # Usage
 ## Engine
 Register PostHTML as View Engine
