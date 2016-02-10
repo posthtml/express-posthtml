@@ -6,7 +6,7 @@ View Engine for [Express](expressjs.com)
 # Install
 
 ```bash
-(sudo) npm i -S express
+
 (sudo) npm i -S express-posthtml
 ```
 
