@@ -1,6 +1,6 @@
 {
   "name": "express-posthtml",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "PostHTML View Engine for Express",
   "main": "index.js",
   "dependencies": {
@@ -18,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michael-ciniawsky/posthtml-express.git"
+    "url": "git+https://github.com/michael-ciniawsky/express-posthtml.git"
   },
   "bugs": {
-    "url": "https://github.com/michael-ciniawsky/posthtml-express/issues"
+    "url": "https://github.com/michael-ciniawsky/express-posthtml/issues"
   },
-  "homepage": "https://github.com/michael-ciniawsky/posthtml-express#readme",
+  "homepage": "https://github.com/michael-ciniawsky/express-posthtml#readme",
   "license": "MIT"
 }
