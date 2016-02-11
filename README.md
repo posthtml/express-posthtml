@@ -117,7 +117,8 @@ var app = express()
 // Engine
 app.engine('html', require('express-posthtml'))
 
-app.set('views', /_ Path to views _/) app.set('view engine', 'html')
+app.set('views', /* Path to views */)
+app.set('view engine', 'html')
 app.set('view options', html) // Global Setup
 
 // Global Use
