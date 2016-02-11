@@ -1,6 +1,6 @@
 {
   "name": "express-posthtml",
-  "version": "0.8.5",
+  "version": "1.0.0",
   "description": "PostHTML View Engine for Express",
   "main": "index.js",
   "dependencies": {

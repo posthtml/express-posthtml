@@ -1,9 +1,11 @@
 [![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/) <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
-# [PostHTML](https://github.com/posthtml/posthtml)
+# [PostHTML](https://github.com/posthtml/posthtml) Express
 View Engine for [Express](expressjs.com)
 
-[PostHTML Plugins Catalog](https://maltsev.github.io/posthtml-plugins/)
+[PostHTML Plugins](https://maltsev.github.io/posthtml-plugins/)
+
+[PostHTML Packages](https://michael-ciniawsky.github.io/posthtml-packages)
 
 # Install
 
@@ -12,7 +14,7 @@ View Engine for [Express](expressjs.com)
 (sudo) npm i -S express-posthtml
 ```
 
-[![npm](https://badge.fury.io/js/express-posthtml.svg)](https://badge.fury.io/js/express-posthtml) ![dependencies](https://david-dm.org/michael-ciniawsky/express-posthtml.svg)
+[![npm](https://badge.fury.io/js/express-posthtml.svg)](https://badge.fury.io/js/express-posthtml) [![dependencies](https://david-dm.org/michael-ciniawsky/express-posthtml.svg)](https://david-dm.org/michael-ciniawsky/express-posthtml)
 
 # Usage
 ## Engine
@@ -49,20 +51,20 @@ res.render('file', { plugins: [ PostHTML Plugins ] })
 ```
 
 ### Extend
-If views share common plugins (e.g [BEM](https://github.com/rajdee/posthtml-bem)), but view specific additions are necessary, use the extend option. Now the global setup is used and will be extended with the local plugins of the respective route.
+If views share common plugins (e.g for [BEM Support](https://github.com/rajdee/posthtml-bem)), but view specific additions are necessary, use the extend option. Now the global setup is used and will be extended with the local plugins of the respective route.
 
-```javascript
+```js
 app.set('view options', [ PostHTML Global Plugins ])
 ```
 
-```javascript
+```js
 res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true, })
 ```
 
 # Example
 ## Plugins
 
-```javascript
+```js
 // Plugins
 var bem = require('posthtml-bem')
 var each = require('posthtml-each')
@@ -99,7 +101,7 @@ app.get('/extend', (req, res) => {
   })  
 
 app.listen(3000, () => {
-    console.log('Server started')
+    console.log('==> Server started')
   }
 )
 ```
@@ -137,12 +139,12 @@ app.get('/local', (req, res) => {
 // Extend Use
 app.get('/extend', (req, res) => {   
   res.render('file', { extend: true, plugins: [
-    require('posthtml-style-to-file')({ path: './test/styles/style.css' })   
+    require('posthtml-style-to-file')({ path: './public/styles/style.css' })   
   ] })
 })
 
 app.listen(3000, () => {
-    console.log('Server started')
+    console.log('==> Server started')
   }
 )
 ```

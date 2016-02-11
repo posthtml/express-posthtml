@@ -13,7 +13,7 @@ module.exports = function (path, options, cb) {
   if (!options.plugins && options.extend === false) {
     plugins = options.settings['view options'] || []
   } else if (options.extend === true) {
-    plugins = options.plugins.concat(options.settings['view options'])
+    plugins = options.settings['view options'].concat(options.plugins)
   } else {
     plugins = options.plugins || []
   }
