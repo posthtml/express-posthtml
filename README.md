@@ -1,9 +1,11 @@
 [![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/) <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
-# [PostHTML](https://github.com/posthtml/posthtml)
+# [PostHTML](https://github.com/posthtml/posthtml) Express
 View Engine for [Express](expressjs.com)
 
-[PostHTML Plugins Catalog](https://maltsev.github.io/posthtml-plugins/)
+[PostHTML Plugins](https://maltsev.github.io/posthtml-plugins/)
+
+[PostHTML Packages](https://michael-ciniawsky.github.io/posthtml-packages)
 
 # Install
 
@@ -12,7 +14,7 @@ View Engine for [Express](expressjs.com)
 (sudo) npm i -S express-posthtml
 ```
 
-[![npm](https://badge.fury.io/js/express-posthtml.svg)](https://badge.fury.io/js/express-posthtml) ![dependencies](https://david-dm.org/michael-ciniawsky/express-posthtml.svg)
+[![npm](https://badge.fury.io/js/express-posthtml.svg)](https://badge.fury.io/js/express-posthtml) [![dependencies](https://david-dm.org/michael-ciniawsky/express-posthtml.svg)](https://david-dm.org/michael-ciniawsky/express-posthtml)
 
 # Usage
 ## Engine
@@ -49,31 +51,33 @@ res.render('file', { plugins: [ PostHTML Plugins ] })
 ```
 
 ### Extend
-If views share common plugins (e.g [BEM](https://github.com/rajdee/posthtml-bem)), but view specific additions are necessary, use the extend option. Now the global setup is used and will be extended with the local plugins of the respective route.
+If views share common plugins (e.g for [BEM Support](https://github.com/rajdee/posthtml-bem)), but view specific additions are necessary, use the extend option. Now the global setup is used and will be extended with the local plugins of the respective route.
 
-```javascript
+```js
 app.set('view options', [ PostHTML Global Plugins ])
 ```
 
-```javascript
+```js
 res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true, })
 ```
 
 # Example
 ## Plugins
 
-```javascript
+```js
+'use strict'
+
 // Plugins
-var bem = require('posthtml-bem')
-var each = require('posthtml-each')
-var include = require('posthtml-include')
+const bem = require('posthtml-bem')
+const each = require('posthtml-each')
+const include = require('posthtml-include')
 
 // App
-var express = require('express')
+const express = require('express')
 
-var app = express()
+let app = express()
 
-// Engine
+// App Engine
 app.engine('html', require('express-posthtml'))
 
 // Settings
@@ -87,7 +91,7 @@ app.get('/', (req, res) => {
   })
 // Local Use
 app.get('/local', (req, res) => {
-    res.render('file', { plugins: [include(), bem({
+    res.render('file', { plugins: [ include(), bem({
       elemPrefix: '_',
       modPrefix: '-',
       modDlmtr: '--'})
@@ -99,7 +103,7 @@ app.get('/extend', (req, res) => {
   })  
 
 app.listen(3000, () => {
-    console.log('Server started')
+    console.log('==> Server started')
   }
 )
 ```
@@ -107,15 +111,22 @@ app.listen(3000, () => {
 ## Package
 
 ```js
+'use strict'
+
 // Package
-var html = require('posthtml-package-html')(/* options */)
+const html = require('posthtml-package-html')(/* options */)
+
+// Package for local use
+const html_local = require('posthtml-package-html')({
+  bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--'}
+})
 
 // App
-var express = require('express')
+const express = require('express')
 
-var app = express()
+let app = express()
 
-// Engine
+// App Engine
 app.engine('html', require('express-posthtml'))
 
 app.set('views', /* Path to views */)
@@ -129,20 +140,18 @@ app.get('/', (req, res) => {
 
 // Local Use
 app.get('/local', (req, res) => {   
-  res.render('file', { plugins: require('posthtml-package-html')({
-    bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--'}})   
-  })
+  res.render('file', { plugins: html_local })
 })
 
 // Extend Use
 app.get('/extend', (req, res) => {   
   res.render('file', { extend: true, plugins: [
-    require('posthtml-style-to-file')({ path: './test/styles/style.css' })   
+    require('posthtml-style-to-file')({ path: './public/styles/style.css' })   
   ] })
 })
 
 app.listen(3000, () => {
-    console.log('Server started')
+    console.log('==> Server started')
   }
 )
 ```

@@ -13,9 +13,10 @@ module.exports = function (path, options, cb) {
   if (!options.plugins && options.extend === false) {
     plugins = options.settings['view options'] || []
   } else if (options.extend === true) {
-    plugins = options.plugins.concat(options.settings['view options'])
+    plugins = options.settings['view options'].concat(options.plugins)
   } else {
     plugins = options.plugins || []
+    console.log(plugins)
   }
 
   fs.readFile(path, function (err, content) {
@@ -23,8 +24,6 @@ module.exports = function (path, options, cb) {
 
     posthtml(plugins)
       .process(content.toString())
-      .then((result) => {
-        return cb(null, result.html)
-      })
+      .then(result => cb(null, result.html))
   })
 }

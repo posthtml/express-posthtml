@@ -2,28 +2,18 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Global</title>
+  <title>Extend</title>
 </head>
 
 <body>
 
-  <div block="block">
-    <h1>Block</h1>
-    <div elem="element">
-      <h2>Element</h2>
+  <div block="block" each="3" style="background-color: black;">
+    <h1 style="color: red;">Block</h1>
+    <div elem="element" style="background-color: green;">
+      <h2 style="color: red;">Element</h2>
     </div>
-    <div elem="element" mods="modifier">
-      <h2>Element with modifier</h2>
-    </div>
-  </div>
-
-  <div block="block" mods="modifier" each="3">
-    <h1>Block with modifier</h1>
-    <div elem="element">
-      <h2>Element</h2>
-    </div>
-    <div elem="element" mods="modifier">
-      <h2>Element with Modifier</h2>
+    <div elem="element" mods="modifier" style="background-color: red;">
+      <h2 style="color: green;">Element Modifier</h2>
     </div>
   </div>
 

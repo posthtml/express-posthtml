@@ -1,0 +1,19 @@
+
+div.block{background-color: black;}
+h1{color: red;}
+div.block__element{background-color: green;}
+h2{color: red;}
+div.block__element.block__element--modifier{background-color: red;}
+h2{color: green;}
+div.block{background-color: black;}
+h1{color: red;}
+div.block__element{background-color: green;}
+h2{color: red;}
+div.block__element.block__element--modifier{background-color: red;}
+h2{color: green;}
+div.block{background-color: black;}
+h1{color: red;}
+div.block__element{background-color: green;}
+h2{color: red;}
+div.block__element.block__element--modifier{background-color: red;}
+h2{color: green;}

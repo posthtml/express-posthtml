@@ -1,10 +1,17 @@
-var express = require('express')
+'use strict'
 
-var app = express()
+const html = require('posthtml-package-html')({
+  include: { root: './public/views/', encoding: 'utf-8' }
+})
 
-var html = require('posthtml-package-html')()
+const html_local = require('posthtml-package-html')({
+  bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--' },
+  include: { root: './public/views/', encoding: 'utf-8' }
+})
 
-console.log(html)
+const express = require('express')
+
+let app = express()
 
 app.engine('html', require('../index'))
 
@@ -17,14 +24,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/local', (req, res) => {
-  res.render('local', { plugins: require('posthtml-package-html')({
-    bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--' } })
-  })
+  res.render('local', { plugins: html_local })
 })
 
 app.get('/extend', (req, res) => {
   res.render('extend', { plugins: [ require('posthtml-style-to-file')({ path:
-    './test/styles/style.css' }) ], extend: true })
+    './public/styles/style.css' }) ], extend: true })
 })
 
 app.listen(3000, () => {
