@@ -1,0 +1,34 @@
+{
+  "name": "express-posthtml-test",
+  "version": "0.8.5",
+  "description": "PostHTML View Engine for Express",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "express-posthtml": "^0.8.5",
+    "posthtml-package-html": "^0.2.0",
+    "posthtml-style-to-file": "^0.1.1"
+  },
+  "scripts": {
+    "start": "echo '==> Starting Server' && node server"
+  },
+  "keywords": [
+    "HTML",
+    "PostHTML",
+    "Express",
+    "View Engine"
+  ],
+  "author": {
+    "name": "Michael Ciniawsky",
+    "email": "<michael.ciniawsky@gmail.com>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michael-ciniawsky/express-posthtml.git"
+  },
+  "bugs": {
+    "url": "https://github.com/michael-ciniawsky/express-posthtml/issues"
+  },
+  "homepage": "https://github.com/michael-ciniawsky/express-posthtml#readme",
+  "license": "MIT"
+}
