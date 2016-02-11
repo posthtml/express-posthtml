@@ -63,10 +63,12 @@ res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true, })
 ## Plugins
 
 ```javascript
+// Plugins
 var bem = require('posthtml-bem')
 var each = require('posthtml-each')
 var include = require('posthtml-include')
 
+// App
 var express = require('express')
 
 var app = express()
@@ -83,7 +85,7 @@ app.set('view options', [ include(), bem(), ]) // Global Setup
 app.get('/', (req, res) => {
     res.render('file')
   })
-// Local
+// Local Use
 app.get('/local', (req, res) => {
     res.render('file', { plugins: [include(), bem({
       elemPrefix: '_',
@@ -91,9 +93,9 @@ app.get('/local', (req, res) => {
       modDlmtr: '--'})
     ] })
   })
-// Extend
+// Extend Use
 app.get('/extend', (req, res) => {
-    res.render('file', { plugins: [/* PostHTML Plugins */], extend: true } )
+    res.render('file', { plugins: [ each() ], extend: true } )
   })  
 
 app.listen(3000, () => {
@@ -102,22 +104,40 @@ app.listen(3000, () => {
 ```
 
 ## Package
+
 ```js
+// Package
+var html = require('posthtml-package-html')(/* options */)
 
-var html = require('posthtml-package-html')(/_ options _/)
-
+// App
 var express = require('express')
 
 var app = express()
 
+// Engine
 app.engine('html', require('express-posthtml'))
 
-app.set('views', /_ Path to views _/) app.set('view engine', 'html') app.set('view options', html)
+app.set('views', /_ Path to views _/) app.set('view engine', 'html')
+app.set('view options', html) // Global Setup
 
-app.get('/', (req, res) => {   res.render('file') })
+// Global Use
+app.get('/', (req, res) => {
+  res.render('file')
+})
 
-app.get('/local', (req, res) => {   res.render('file', { plugins: require('posthtml-package-html')({     bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--'}})   }) })
+// Local Use
+app.get('/local', (req, res) => {   
+  res.render('file', { plugins: require('posthtml-package-html')({
+    bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--'}})   
+  })
+})
 
-app.get('/extend', (req, res) => {   res.render('file', { extend: true, plugins: [     require('posthtml-style-to-file')({ path: './test/styles/style.css' })   ] }) })
+// Extend Use
+app.get('/extend', (req, res) => {   
+  res.render('file', { extend: true, plugins: [
+    require('posthtml-style-to-file')({ path: './test/styles/style.css' })   
+  ] })
+})
 
-app.listen(3000) ``
+app.listen(3000)
+```
