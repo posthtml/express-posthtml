@@ -1,4 +1,4 @@
-# PostHTML Express
+# PostHTML Express Example
 ## Install
 
 ```

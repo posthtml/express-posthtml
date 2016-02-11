@@ -1,11 +1,11 @@
 {
   "name": "express-posthtml-test",
-  "version": "0.8.5",
+  "version": "1.0.0",
   "description": "PostHTML View Engine for Express",
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.4",
-    "express-posthtml": "^0.8.5",
+    "express-posthtml": "^1.0.0",
     "posthtml-package-html": "^0.2.0",
     "posthtml-style-to-file": "^0.1.1"
   },

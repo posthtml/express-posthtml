@@ -2,7 +2,9 @@ var express = require('express')
 
 var app = express()
 
-var html = require('posthtml-package-html')()
+var html = require('posthtml-package-html')({
+  include: { root: './public/views/', encoding: 'utf-8' }
+})
 
 console.log(html)
 
@@ -24,7 +26,7 @@ app.get('/local', (req, res) => {
 
 app.get('/extend', (req, res) => {
   res.render('extend', { plugins: [ require('posthtml-style-to-file')({ path:
-    './test/styles/style.css' }) ], extend: true })
+    './public/styles/style.css' }) ], extend: true })
 })
 
 app.listen(3000, () => {
