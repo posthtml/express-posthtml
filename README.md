@@ -60,8 +60,13 @@ res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true, })
 ```
 
 # Example
+## Plugins
 
 ```javascript
+var bem = require('posthtml-bem')
+var each = require('posthtml-each')
+var include = require('posthtml-include')
+
 var express = require('express')
 
 var app = express()
@@ -72,7 +77,7 @@ app.engine('html', require('express-posthtml'))
 // Settings
 app.set('views', /* Path to views */)
 app.set('view engine', 'html')
-app.set('view options', [/* PostHTML Plugins */]) // Global Setup
+app.set('view options', [ include(), bem(), ]) // Global Setup
 
 // Global Use
 app.get('/', (req, res) => {
@@ -80,7 +85,11 @@ app.get('/', (req, res) => {
   })
 // Local
 app.get('/local', (req, res) => {
-    res.render('file', { plugins: [/* PostHTML Plugins */] } )
+    res.render('file', { plugins: [include(), bem({
+      elemPrefix: '_',
+      modPrefix: '-',
+      modDlmtr: '--'})
+    ] })
   })
 // Extend
 app.get('/extend', (req, res) => {
@@ -91,3 +100,24 @@ app.listen(3000, () => {
     console.log('Server started!')
   })
 ```
+
+## Package
+```js
+
+var html = require('posthtml-package-html')(/_ options _/)
+
+var express = require('express')
+
+var app = express()
+
+app.engine('html', require('express-posthtml'))
+
+app.set('views', /_ Path to views _/) app.set('view engine', 'html') app.set('view options', html)
+
+app.get('/', (req, res) => {   res.render('file') })
+
+app.get('/local', (req, res) => {   res.render('file', { plugins: require('posthtml-package-html')({     bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--'}})   }) })
+
+app.get('/extend', (req, res) => {   res.render('file', { extend: true, plugins: [     require('posthtml-style-to-file')({ path: './test/styles/style.css' })   ] }) })
+
+app.listen(3000) ``

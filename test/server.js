@@ -2,32 +2,28 @@ var express = require('express')
 
 var app = express()
 
-var bem = require('posthtml-bem')
-var each = require('posthtml-each')
-var include = require('posthtml-include')
+var html = require('posthtml-package-html')()
 
 app.engine('html', require('../index'))
 
 app.set('views', __dirname)
 app.set('view engine', 'html')
-app.set('view options', [ include({ encoding: 'utf-8' }), bem() ])
+app.set('view options', html)
 
 app.get('/', (req, res) => {
-  res.render('include')
+  res.render('global')
 })
 
 app.get('/local', (req, res) => {
-  res.render('bem', { plugins: [
-    bem({
-      elemPrefix: '__',
-      modPrefix: '--',
-      modDlmtr: '-'
-    })
-  ]})
+  res.render('local', { plugins: require('posthtml-package-html')({
+    bem: { elemPrefix: '_', modPrefix: '-', modDlmtr: '--'}})
+  })
 })
 
 app.get('/extend', (req, res) => {
-  res.render('bem', { extend: true, plugins: [ each() ] })
+  res.render('extend', { extend: true, plugins: [
+    require('posthtml-style-to-file')({ path: './test/styles/style.css' }) 
+  ] })
 })
 
 app.listen(3000)
