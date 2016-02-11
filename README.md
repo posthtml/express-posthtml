@@ -99,8 +99,9 @@ app.get('/extend', (req, res) => {
   })  
 
 app.listen(3000, () => {
-    console.log('Server started!')
-  })
+    console.log('Server started')
+  }
+)
 ```
 
 ## Package
@@ -140,5 +141,8 @@ app.get('/extend', (req, res) => {
   ] })
 })
 
-app.listen(3000)
+app.listen(3000, () => {
+    console.log('Server started')
+  }
+)
 ```
