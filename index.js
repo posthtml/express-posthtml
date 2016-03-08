@@ -2,13 +2,13 @@
 // #POSTHTML - EXPRESS
 // ------------------------------------
 
-var fs = require('fs')
-var posthtml = require('posthtml')
+const fs = require('fs')
+const posthtml = require('posthtml')
 
 module.exports = function (path, options, cb) {
   options.extend = options.extend || false
 
-  var plugins
+  let plugins
 
   if (!options.plugins && options.extend === false) {
     plugins = options.settings['view options'] || []
@@ -16,7 +16,6 @@ module.exports = function (path, options, cb) {
     plugins = options.settings['view options'].concat(options.plugins)
   } else {
     plugins = options.plugins || []
-    console.log(plugins)
   }
 
   fs.readFile(path, function (err, content) {

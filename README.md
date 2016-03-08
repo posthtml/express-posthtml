@@ -1,20 +1,15 @@
-[![Express Logo](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)](http://expressjs.com/) <img align="right" width="220" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
+[![npm][npm]][npm-1]
+[![dependencies][deps]][deps-1]
 
-# [PostHTML](https://github.com/posthtml/posthtml) Express
-View Engine for [Express](expressjs.com)
+ <img align="right" width="150" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
 
-[PostHTML Plugins](https://maltsev.github.io/posthtml-plugins/)
-
-[PostHTML Packages](https://michael-ciniawsky.github.io/posthtml-packages)
+# [PostHTML](https://github.com/posthtml/posthtml) <img align="" width="125" height="50" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" />
 
 # Install
 
 ```bash
-
 (sudo) npm i -S express-posthtml
 ```
-
-[![npm](https://badge.fury.io/js/express-posthtml.svg)](https://badge.fury.io/js/express-posthtml) [![dependencies](https://david-dm.org/michael-ciniawsky/express-posthtml.svg)](https://david-dm.org/michael-ciniawsky/express-posthtml)
 
 # Usage
 ## Engine
@@ -51,7 +46,7 @@ res.render('file', { plugins: [ PostHTML Plugins ] })
 ```
 
 ### Extend
-If views share common plugins (e.g for [BEM Support](https://github.com/rajdee/posthtml-bem)), but view specific additions are necessary, use the extend option. Now the global setup is used and will be extended with the local plugins of the respective route.
+If views share common plugins (e.g for [BEM Support][bem]), but view specific additions are necessary, use the extend option. Now the global setup is used and will be extended with the local plugins of the respective route.
 
 ```js
 app.set('view options', [ PostHTML Global Plugins ])
@@ -155,3 +150,9 @@ app.listen(3000, () => {
   }
 )
 ```
+
+[npm]: https://badge.fury.io/js/express-posthtml.svg
+[npm-1]: https://badge.fury.io/js/express-posthtml
+[deps]: https://david-dm.org/michael-ciniawsky/express-posthtml.svg
+[deps-1]: https://david-dm.org/michael-ciniawsky/express-posthtml
+[bem]: https://github.com/rajdee/posthtml-bem
