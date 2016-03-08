@@ -1,9 +1,7 @@
 [![npm][npm]][npm-1]
 [![dependencies][deps]][deps-1]
 
- <img align="right" width="150" height="200" title="PostHTML logo" src="http://posthtml.github.io/posthtml/logo.svg">
-
-# [PostHTML](https://github.com/posthtml/posthtml) <img align="" width="125" height="50" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" />
+<img align="middle" width="125" height="150" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" /> <img align="right" width="150" height="150" title="PostHTML " src="http://posthtml.github.io/posthtml/logo.svg">
 
 # Install
 
