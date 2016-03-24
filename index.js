@@ -2,10 +2,12 @@
 // #POSTHTML - EXPRESS
 // ------------------------------------
 
+'use strict'
+
 const fs = require('fs')
 const posthtml = require('posthtml')
 
-module.exports = function (path, options, cb) {
+exports = module.exports = function (path, options, cb) {
   options.extend = options.extend || false
 
   let plugins
