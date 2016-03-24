@@ -1,5 +1,5 @@
-[![npm][npm]][npm-1]
-[![dependencies][deps]][deps-1]
+[![npm][npm]][npm-url]
+[![dependencies][deps]][deps-url]
 
 <img align="middle" width="125" height="150" title="ExpressJS" src="https://worldvectorlogo.com/logos/express-109.svg" /> <img align="right" width="150" height="150" title="PostHTML " src="http://posthtml.github.io/posthtml/logo.svg">
 
@@ -150,7 +150,7 @@ app.listen(3000, () => {
 ```
 
 [npm]: https://badge.fury.io/js/express-posthtml.svg
-[npm-1]: https://badge.fury.io/js/express-posthtml
+[npm-url]: https://badge.fury.io/js/express-posthtml
 [deps]: https://david-dm.org/michael-ciniawsky/express-posthtml.svg
-[deps-1]: https://david-dm.org/michael-ciniawsky/express-posthtml
+[deps-url]: https://david-dm.org/michael-ciniawsky/express-posthtml
 [bem]: https://github.com/rajdee/posthtml-bem
