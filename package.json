@@ -1,10 +1,10 @@
 {
   "name": "express-posthtml",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "PostHTML for Express",
   "main": "index.js",
   "dependencies": {
-    "posthtml": "^0.8.3"
+    "posthtml": "^0.8.7"
   },
   "keywords": [
     "HTML",
@@ -18,11 +18,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michael-ciniawsky/express-posthtml.git"
+    "url": "git+https://github.com/posthtml/express-posthtml.git"
   },
   "bugs": {
-    "url": "https://github.com/michael-ciniawsky/express-posthtml/issues"
+    "url": "https://github.com/posthtml/express-posthtml/issues"
   },
-  "homepage": "https://github.com/michael-ciniawsky/express-posthtml#readme",
+  "homepage": "https://github.com/posthtml/express-posthtml#readme",
   "license": "MIT"
 }
