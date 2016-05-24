@@ -1,10 +1,23 @@
 # FILES
 
-.editorconfig
+.travis.yml
 .gitignore
+.editorconfig
+
+CHANGELOG.md
+CONTRIBUTING.md
+README.md
+
+exec.js
+*.test.js
+
 npm-debug.log
 
 # DIRECTORIES
 
+.github
+.nyc_output
+
 test
+coverage
 node_modules
