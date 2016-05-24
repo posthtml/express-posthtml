@@ -1,8 +1,8 @@
-# PostHTML Express Example
+# Express PostHTML Example
 ## Install
 
 ```
-$ (sudo) npm i
+$ npm i
 ```
 
 ## Start

@@ -5,12 +5,12 @@
   "main": "server.js",
   "dependencies": {
     "express": "^4.13.4",
-    "express-posthtml": "^1.0.0",
+    "express-posthtml": "^1.0.4",
     "posthtml-package-html": "^0.2.0",
     "posthtml-style-to-file": "^0.1.1"
   },
   "scripts": {
-    "start": "echo '==> Starting Server' && node server"
+    "start": "echo '=> Starting Server' && node server"
   },
   "keywords": [
     "HTML",
@@ -24,11 +24,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/michael-ciniawsky/express-posthtml.git"
+    "url": "git+https://github.com/posthtml/express-posthtml.git"
   },
   "bugs": {
-    "url": "https://github.com/michael-ciniawsky/express-posthtml/issues"
+    "url": "https://github.com/posthtml/express-posthtml/issues"
   },
-  "homepage": "https://github.com/michael-ciniawsky/express-posthtml#readme",
+  "homepage": "https://github.com/posthtml/express-posthtml#readme",
   "license": "MIT"
 }
