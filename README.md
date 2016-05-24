@@ -5,14 +5,14 @@
 [![Standard Code Style][style]][style-url]
 
 <div align="center">
-    <img width="125" height="150" title="Express" src="https://worldvectorlogo.com/logos/109.svg">
-    <img width="125" height="150" title="PostHTML " src="http://posthtml.github.io/posthtml/logo.svg">
+    <img width="150" height="150" title="Express" src="https://worldvectorlogo.com/logos/express-109.svg">
+    <img width="125" height="150" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
 </div>
 
 ## Install
 
 ```bash
-(sudo) npm i -S posthtml
+$ npm i -S express-posthtml
 ```
 
 ## Usage
