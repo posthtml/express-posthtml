@@ -9,15 +9,17 @@
     <img width="180" height="150" title="Express" src="https://worldvectorlogo.com/logos/express-109.svg">
   </a>
   <img width="120" height="120" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
+  <h1>Express PostHTML</h1>
 </div>
 
-## Install
+<h2 align="center">Install</h2>
 
 ```bash
 npm i -S express-posthtml
 ```
 
-## Usage
+<h2 align="center">Usage</h2>
+
 #### Engine
 
 Register PostHTML as View Engine
@@ -29,7 +31,6 @@ app.set('views', /* Path to views */)
 app.set('view engine', 'html')
 ```
 
-## Plugins
 #### Global
 
 All Views will be render with this plugin setup, if no local setup provided.
@@ -68,8 +69,7 @@ app.set('view options', [ PostHTML Global Plugins ])
 res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true })
 ```
 
-## Example
-#### Plugins
+<h2 align="center">Example</h2>
 
 ```js
 'use strict'
@@ -108,7 +108,7 @@ app.get('/extend', (req, res) => {
 app.listen(3000, () => console.log('=> Server started'))
 ```
 
-## LICENSE
+<h2 align="center">LICENSE</h2>
 
 > MIT License (MIT)
 
