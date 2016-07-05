@@ -5,10 +5,10 @@
 [![Standard Code Style][style]][style-url]
 
 <div align="center">
-  <a href="https://expressjs.com" style="margin-right: 100px">
-    <img width="150" height="150" title="Express" src="https://worldvectorlogo.com/logos/express-109.svg">
+  <a href="http://expressjs.com">
+    <img width="180" height="150" title="Express" src="https://worldvectorlogo.com/logos/express-109.svg">
   </a>
-  <img width="125" height="150" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
+  <img width="120" height="120" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
 </div>
 
 ## Install
@@ -74,11 +74,12 @@ res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true })
 ```js
 'use strict'
 
+import express from 'express'
+import posthtml from 'express-posthtml'
+
 // Plugins
 import bem from 'posthtml-bem'
 import import from 'posthtml-import'
-
-import express from 'express'
 
 const app = express()
 
