@@ -1,22 +1,25 @@
 [![NPM][npm]][npm-url]
-[![Node][node]][node-url]
-[![Dependencies][deps]][deps-url]
-[![DevDependencies][devdeps]][devdeps-url]
+[![Deps][deps]][deps-url]
+[![Tests][travis]][travis-url]
+[![Coverage][cover]][cover-url]
 [![Standard Code Style][style]][style-url]
 
 <div align="center">
+  <a href="https://expressjs.com" style="margin-right: 100px">
     <img width="150" height="150" title="Express" src="https://worldvectorlogo.com/logos/express-109.svg">
-    <img width="125" height="150" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
+  </a>
+  <img width="125" height="150" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
 </div>
 
 ## Install
 
 ```bash
-$ npm i -S express-posthtml
+npm i -S express-posthtml
 ```
 
 ## Usage
 #### Engine
+
 Register PostHTML as View Engine
 
 ```javascript
@@ -31,11 +34,11 @@ app.set('view engine', 'html')
 
 All Views will be render with this plugin setup, if no local setup provided.
 
-```javascript
+```js
 app.set('view options', [ PostHTML Plugins ])
 ```
 
-```javascript
+```js
 res.render('file')
 ```
 
@@ -43,11 +46,11 @@ res.render('file')
 
 View specific setup by adding plugins separately to the respective routes. Note that if you have set plugins globally, routes with local setup will not use the global setup by default.
 
-```javascript
+```js
 app.set('view options', [])
 ```
 
-```javascript
+```js
 res.render('file', { plugins: [ PostHTML Plugins ] })
 ```
 
@@ -62,7 +65,7 @@ app.set('view options', [ PostHTML Global Plugins ])
 ```
 
 ```js
-res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true, })
+res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true })
 ```
 
 ## Example
@@ -72,99 +75,43 @@ res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true, })
 'use strict'
 
 // Plugins
-const bem = require('posthtml-bem')
-const each = require('posthtml-each')
-const include = require('posthtml-include')
+import bem from 'posthtml-bem'
+import import from 'posthtml-import'
 
-// App
-const express = require('express')
+import express from 'express'
 
-let app = express()
+const app = express()
 
-// App Engine
 app.engine('html', require('posthtml'))
 
-// Settings
 app.set('views', /* Path to views */)
 app.set('view engine', 'html')
-app.set('view options', [ include(), bem(), ]) // Global Setup
+app.set('view options', [ import(), bem() ]) // Global
 
-// Global Use
 app.get('/', (req, res) => {
     res.render('file')
   })
-// Local Use
+
+// Local
 app.get('/local', (req, res) => {
-    res.render('file', { plugins: [ include(), bem({
-      elemPrefix: '_',
-      modPrefix: '-',
-      modDlmtr: '--'})
-    ] })
-  })
-// Extend Use
+  res.render('file', { plugins: [ import(), bem({
+    elemPrefix: '_', modPrefix: '-', modDlmtr: '--'
+  }) ]})
+})
+
+// Extend
 app.get('/extend', (req, res) => {
-    res.render('file', { plugins: [ each() ], extend: true } )
-  })  
-
-app.listen(3000, () => {
-    console.log('==> Server started')
-  }
-)
-```
-
-## Package
-
-```js
-'use strict'
-
-// Package
-const html = require('posthtml-package-html')(/* options */)
-
-// Package for local use
-const $html = require('posthtml-package-html')({
-  bem: { elemPrefix: '__', modPrefix: '-', modDlmtr: '--'}
+  res.render('file', { plugins: [ require('posthtml-each')() ], extend: true })
 })
 
-// App
-const express = require('express')
-
-let app = express()
-
-// App Engine
-app.engine('html', require('posthtml'))
-
-app.set('views', /* Path to views */)
-app.set('view engine', 'html')
-app.set('view options', html) // Global Setup
-
-// Global Use
-app.get('/', (req, res) => {
-  res.render('file')
-})
-
-// Local Use
-app.get('/local', (req, res) => {   
-  res.render('file', { plugins: $html })
-})
-
-// Extend Use
-app.get('/extend', (req, res) => {   
-  res.render('file', { extend: true, plugins: [
-    require('posthtml-style-to-file')({ path: './public/styles/style.css' })   
-  ] })
-})
-
-app.listen(3000, () => {
-    console.log('=> Server started')
-  }
-)
+app.listen(3000, () => console.log('=> Server started'))
 ```
 
 ## LICENSE
 
 > MIT License (MIT)
 
-> Copyright (c) 2016 Michael Ciniawsky
+> Copyright (c) 2016 PostHTML Michael Ciniawsky <michael.ciniawsky@gmail.com>
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -187,14 +134,8 @@ SOFTWARE.
 [npm]: https://img.shields.io/npm/v/express-posthtml.svg
 [npm-url]: https://npmjs.com/package/express-posthtml
 
-[node]: https://img.shields.io/node/v/gh-badges.svg?maxAge=2592000
-[node-url]: https://nodejs.org
-
 [deps]: https://david-dm.org/posthtml/express-posthtml.svg
 [deps-url]: https://david-dm.org/posthtml/express-posthtml
-
-[devdeps]: https://david-dm.org/posthtml/express-posthtml/dev-status.svg
-[devdeps-url]: https://david-dm.org/posthtml/express-posthtml#info=devDependencies
 
 [style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [style-url]: http://standardjs.com/
@@ -202,20 +143,5 @@ SOFTWARE.
 [travis]: http://img.shields.io/travis/posthtml/express-posthtml.svg
 [travis-url]: https://travis-ci.org/posthtml/express-posthtml
 
-[travis-rel]: http://img.shields.io/travis/posthtml/express-posthtml.svg?branch=release/1.0.0
-[travis-rel-url]:https://travis-ci.org/posthtml/express-posthtml?branch=release/1.0.0
-
-[travis-dev]: http://img.shields.io/travis/posthtml/express-posthtml.svg?branch=develop
-[travis-dev-url]: https://travis-ci.org/posthtml/express-posthtml?branch=develop
-
 [cover]: https://coveralls.io/repos/github/posthtml/express-posthtml/badge.svg?branch=master
 [cover-url]: https://coveralls.io/github/posthtml/express-posthtml?branch=master
-
-[cover-rel]: https://coveralls.io/repos/github/posthtml/express-posthtml/badge.svg?branch=release/1.0.0
-[cover-rel-url]: https://coveralls.io/github/posthtml/express-posthtml?branch=release/1.0.0
-
-[cover-dev]: https://coveralls.io/repos/github/posthtml/express-posthtml/badge.svg?branch=develop
-[cover-dev-url]: https://coveralls.io/github/posthtml/express-posthtml?branch=develop
-
-[license]: https://img.shields.io/github/license/posthtml/express-posthtml.svg
-[license-url]: https://raw.githubusercontent.com/posthtml/express-posthtml/master/LICENSE
