@@ -4,7 +4,7 @@
   "description": "PostHTML for Express",
   "main": "index.js",
   "dependencies": {
-    "posthtml": "^0.9.1"
+    "posthtml": "^0.9.2"
   },
   "keywords": [
     "HTML",
