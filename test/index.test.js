@@ -15,7 +15,6 @@ test('Pug', () => {
   const app = express()
 
   const plugins = [
-    require('posthtml-bem')(),
     require('posthtml-expressions')({ locals: { foo: 'bar' } })
   ]
   const options = { parser: require('posthtml-pug')() }
@@ -36,7 +35,6 @@ test('HTML', () => {
   const app = express()
 
   const plugins = [
-    require('posthtml-bem')(),
     require('posthtml-expressions')({ locals: { foo: 'bar' } })
   ]
 
@@ -56,7 +54,6 @@ test('SSML', () => {
   const app = express()
 
   const plugins = [
-    require('posthtml-bem')(),
     require('posthtml-expressions')({ locals: { foo: 'bar' } })
   ]
   const options = { parser: require('posthtml-sugarml')() }
@@ -77,7 +74,6 @@ test.skip('Error', () => {
   const app = express()
 
   const plugins = [
-    require('posthtml-bem')(),
     require('posthtml-expressions')({ locals: { foo: 'bar' } })
   ]
   const options = { parser: require('posthtml-sugarml')() }
