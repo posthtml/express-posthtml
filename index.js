@@ -7,24 +7,46 @@
 const fs = require('fs')
 const posthtml = require('posthtml')
 
-exports = module.exports = function (path, options, cb) {
+/**
+ * @author Michael Ciniawsky (@michael-ciniawsky) <michael.ciniawsky@gmail.com>
+ * @description PostHTML View Engine for Express
+ * @license MIT
+ *
+ * @module express-posthtml
+ * @version 1.1.0
+ *
+ * @requires posthtml
+ *
+ * @method posthtml
+ *
+ * @param  {String} path View Path
+ * @param  {Object} options View Options
+ * @param  {Function} cb Callback
+ *
+ * @return {Function} cb HTML
+ */
+module.exports = function (path, options, cb) {
   options.extend = options.extend || false
 
   let plugins
 
-  if (!options.plugins && options.extend === false) {
-    plugins = options.settings['view options'] || []
+  if (!options.plugins && !options.extend) {
+    plugins = options.settings['view options'].plugins || []
   } else if (options.extend === true) {
-    plugins = options.settings['view options'].concat(options.plugins)
+    plugins = options.settings['view options'].plugins
+    plugins = plugins.concat(options.plugins)
   } else {
     plugins = options.plugins || []
   }
 
-  fs.readFile(path, function (err, content) {
-    if (err) return cb(new Error(err))
+  options = options.settings['view options'].options || {}
 
-    posthtml(plugins)
-      .process(content.toString())
+  fs.readFile(path, 'utf8', (err, html) => {
+    if (err) return cb(err)
+
+    return posthtml(plugins)
+      .process(html, options)
       .then(result => cb(null, result.html))
+      .catch((err) => cb(err))
   })
 }
