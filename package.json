@@ -1,7 +1,8 @@
 {
   "name": "express-posthtml",
   "version": "1.0.4",
-  "description": "PostHTML for Express",
+  "description": "PostHTML View Engine for Express",
+  "engines": { "node": ">=4" },
   "main": "index.js",
   "scripts": {
     "lint": "standard",
