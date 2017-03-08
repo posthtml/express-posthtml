@@ -1,41 +1,54 @@
-[![NPM][npm]][npm-url]
-[![Deps][deps]][deps-url]
-[![Tests][build]][build-url]
-[![Coverage][cover]][cover-url]
-[![Standard Code Style][style]][style-url]
-[![Chat][chat]][chat-badge]
+[![npm][npm]][npm-url]
+[![deps][deps]][deps-url]
+[![tests][tests]][tests-url]
+[![coverage][cover]][cover-url]
+[![code style][style]][style-url]
+[![chat][chat]][chat-badge]
 
 # Express PostHTML <img width="200" height="220" align="right" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
 
-## Install
+
+<div align="center">
+  <img width="100" height="100" title="Express" src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png">
+  <a href="https://github.com/posthtml/posthtml">
+    <img width="200" height="220" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
+  </a>
+  <h1>Express PostHTML</h1>
+</div>
+
+<h2 align="center">Install</h2>
 
 ```bash
 npm i -S express-posthtml
 ```
 
-## Usage
+<h2 align="center">Usage</h2>
 
 ### Engine
 
-Register PostHTML as View Engine
+Register PostHTML as Express View Engine
 
 ```js
-app.engine('html', require('posthtml'))
-
-app.set('views', /* Path to views */)
-app.set('view engine', 'html')
+app.engine('html', require('express-posthtml'))
 ```
+
+<h2 align="center">Options</h2>
+
+|Name|Type|Default|Description|
+|:--:|:--:|:-----:|:----------|
+|`plugins`|`{Array}`|`[]`|PostHTML Plugins|
+|`options`|`{Object}`|`{}`|PostHTML Options|
 
 ### Global
 
-All Views will be render with this plugin setup, if no local setup provided.
+All views will render with this setup, if no local setup provided.
 
 ```js
-app.set('view options', [ PostHTML Plugins ])
+app.set('view options', { plugins: [], options: {} })
 ```
 
 ```js
-res.render('file')
+res.render('file.ext')
 ```
 
 ### Local
@@ -43,11 +56,11 @@ res.render('file')
 View specific setup by adding plugins separately to the respective routes. Note that if you have set plugins globally, routes with local setup will not use the global setup by default.
 
 ```js
-app.set('view options', [])
+app.set('view options', { options: { parser: pug }})
 ```
 
 ```js
-res.render('file', { plugins: [ PostHTML Plugins ] })
+res.render('file.pug', { plugins: [...plugins] })
 ```
 
 ### Extend
@@ -57,55 +70,38 @@ If views share common plugins (e.g for [BEM Support][bem]), but view specific ad
 [bem]: https://github.com/rajdee/posthtml-bem
 
 ```js
-app.set('view options', [ PostHTML Global Plugins ])
+app.set('view options', { plugins: [...plugins], options: {} })
 ```
 
 ```js
-res.render('file', { plugins: [ PostHTML Local Plugins ], extend: true })
+res.render('file', { plugins: [/* PostHTML Plugins */], extend: true })
 ```
 
-## Example
+<h2 align="center">Example</h2>
 
 ```js
-
-'use strict'
-
 import express from 'express'
 import posthtml from 'express-posthtml'
-
-// Plugins
-import bem from 'posthtml-bem'
-import imports from 'posthtml-import'
 
 const app = express()
 
 app.engine('html', require('posthtml'))
 
+const plugins = [
+  require('posthtml-bem')()
+  require('posthtml-expressions')()
+]
+const options = {}
+
 app.set('views', /* Path to views */)
-app.set('view engine', 'html')
-app.set('view options', [ imports(), bem() ])
+app.set('view options', { plugins: plugins, options: options })
 
-// Global
-app.get('/', (req, res) => {
-    res.render('file')
-  })
+app.get('/', (req, res) => res.render('index.html'))
 
-// Local
-app.get('/local', (req, res) => {
-  res.render('file', { plugins: [ imports(), bem({
-    elemPrefix: '_', modPrefix: '-', modDlmtr: '--'
-  }) ]})
-})
-
-// Extend
-app.get('/extend', (req, res) => {
-  res.render('file', { plugins: [ require('posthtml-each')() ], extend: true })
-})
-
-app.listen(3000, () => console.log('=> Server started'))
+app.listen(3000)
 ```
 
-## Maintainers
+<h2 align="center">Maintainers</h2>
 
 <table>
   <tbody>
@@ -120,16 +116,11 @@ app.listen(3000, () => console.log('=> Server started'))
   <tbody>
 </table>
 
-## Contributing
-
-See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs) and [contribution guide](CONTRIBUTING.md).
-
-## LICENSE
-
-[MIT](LICENSE)
-
 [npm]: https://img.shields.io/npm/v/express-posthtml.svg
 [npm-url]: https://npmjs.com/package/express-posthtml
+
+[node]: https://img.shields.io/node/v/postcss-load-plugins.svg
+[node-url]: https://nodejs.org/
 
 [deps]: https://david-dm.org/posthtml/express-posthtml.svg
 [deps-url]: https://david-dm.org/posthtml/express-posthtml
@@ -137,11 +128,11 @@ See [PostHTML Guidelines](https://github.com/posthtml/posthtml/tree/master/docs)
 [style]: https://img.shields.io/badge/code%20style-standard-yellow.svg
 [style-url]: http://standardjs.com/
 
-[build]: http://img.shields.io/travis/posthtml/express-posthtml.svg
-[build-url]: https://travis-ci.org/posthtml/express-posthtml
+[tests]: http://img.shields.io/travis/posthtml/express-posthtml.svg
+[tests-url]: https://travis-ci.org/posthtml/express-posthtml
 
-[cover]: https://coveralls.io/repos/github/posthtml/express-posthtml/badge.svg?branch=master
-[cover-url]: https://coveralls.io/github/posthtml/express-posthtml?branch=master
+[cover]: https://coveralls.io/repos/github/posthtml/express-posthtml/badge.svg
+[cover-url]: https://coveralls.io/github/posthtml/express-posthtml
 
 [chat]: https://badges.gitter.im/posthtml/posthtml.svg
 [chat-badge]: https://gitter.im/posthtml/posthtml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge"
