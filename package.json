@@ -2,7 +2,9 @@
   "name": "express-posthtml",
   "version": "1.0.4",
   "description": "PostHTML View Engine for Express",
-  "engines": { "node": ">=4" },
+  "engines": {
+    "node": ">=4"
+  },
   "main": "index.js",
   "scripts": {
     "lint": "standard",
@@ -22,6 +24,8 @@
     "jsdoc-to-markdown": "^3.0.0",
     "posthtml-bem": "^0.2.2",
     "posthtml-expressions": "^1.1.0",
+    "posthtml-pug": "^1.0.2",
+    "posthtml-sugarml": "^1.0.0-alpha3",
     "standard": "^9.0.1",
     "standard-version": "^4.0.0",
     "supertest": "^3.0.0"
