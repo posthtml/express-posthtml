@@ -5,11 +5,8 @@
 [![code style][style]][style-url]
 [![chat][chat]][chat-badge]
 
-# Express PostHTML <img width="200" height="220" align="right" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
-
-
 <div align="center">
-  <img width="100" height="100" title="Express" src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png">
+  <img width="200" height="200" title="Express" hspace="50" src="https://i.cloudup.com/zfY6lL7eFa-3000x3000.png">
   <a href="https://github.com/posthtml/posthtml">
     <img width="200" height="220" title="PostHTML" src="http://posthtml.github.io/posthtml/logo.svg">
   </a>
