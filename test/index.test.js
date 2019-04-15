@@ -10,7 +10,6 @@ const supertest = require('supertest')
 
 const posthtml = require('..')
 
-
 test('Pug', () => {
   const app = express()
 

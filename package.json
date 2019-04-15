@@ -3,7 +3,7 @@
   "version": "1.1.0",
   "description": "PostHTML View Engine for Express",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "main": "index.js",
   "scripts": {
@@ -15,20 +15,20 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "posthtml": "^0.9.2"
+    "posthtml": "^0.11.3"
   },
   "devDependencies": {
-    "coveralls": "^2.12.0",
+    "coveralls": "^3.0.3",
     "express": "^4.15.2",
-    "jest": "^19.0.2",
-    "jsdoc-to-markdown": "^3.0.0",
+    "jest": "^24.7.1",
+    "jsdoc-to-markdown": "^4.0.1",
     "posthtml-bem": "^0.2.2",
     "posthtml-expressions": "^1.1.0",
     "posthtml-pug": "^1.0.2",
     "posthtml-sugarml": "^1.0.0-alpha3",
-    "standard": "^9.0.1",
-    "standard-version": "^4.0.0",
-    "supertest": "^3.0.0"
+    "standard": "^12.0.1",
+    "standard-version": "^5.0.2",
+    "supertest": "^4.0.2"
   },
   "standard": {
     "env": {
