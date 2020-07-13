@@ -27,7 +27,7 @@
     "posthtml-pug": "^1.0.2",
     "posthtml-sugarml": "^1.0.0-alpha3",
     "standard": "^12.0.1",
-    "standard-version": "^5.0.2",
+    "standard-version": "^8.0.1",
     "supertest": "^4.0.2"
   },
   "standard": {
