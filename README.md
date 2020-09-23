@@ -85,7 +85,7 @@ const app = express()
 app.engine('html', require('posthtml'))
 
 const plugins = [
-  require('posthtml-bem')()
+  require('posthtml-bem')(),
   require('posthtml-expressions')()
 ]
 const options = {}
