@@ -82,7 +82,7 @@ import posthtml from 'express-posthtml'
 
 const app = express()
 
-app.engine('html', require('posthtml'))
+app.engine('html', posthtml)
 
 const plugins = [
   require('posthtml-bem')(),
